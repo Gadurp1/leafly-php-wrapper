@@ -1,0 +1,20 @@
+{
+    "name": "tinyrocket/leafly",
+    "description": "A simple wrapper for the Leafly API",
+    "require": {
+        "kriswallsmith/buzz": "dev-master"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Kyle Martin",
+            "email": "michael@tinyrocket.co"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Leafly\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
