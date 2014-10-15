@@ -14,21 +14,37 @@
  * @version    1.0.0
  * @author     TinyRocket <michael@tinyrocket.co>
  * @license    BSD License (3-clause)
- * @copyright  (c) 2011 - 2013, TinyRocket
+ * @copyright  Copyright 2014 TinyRocket
  * @link       http://tinyrocket.co/leafly
  */
 namespace Leafly\Resource;
 
 abstract class AbstractResource {
 
+	/**
+	 *	Adapter provided by string
+	 *
+	 *	@var AbstractAdapter
+	 */
 	protected $adapter;
 
+	/**
+	 *	API Endpoint
+	 *
+	 *	@var string
+	 */
 	protected $enpoint;
 
-	public function __construct($adapter)
+	/**
+	 *	Set adapter and endpoint for resources
+	 *
+	 *	@param adapter 		Adpater chosen during initialization
+	 *	@param endponint 	API Endpoint, if different
+	 */
+	public function __construct($adapter, $endpoint = 'http://data.leafly.com/')
 	{
 		$this->adapter = $adapter;
-		$this->endpoint = 'http://data.leafly.com/';
+		$this->endpoint = $endpoint;
 	}
 
 }

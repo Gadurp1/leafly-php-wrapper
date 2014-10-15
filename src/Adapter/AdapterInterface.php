@@ -14,18 +14,45 @@
  * @version    1.0.0
  * @author     TinyRocket <michael@tinyrocket.co>
  * @license    BSD License (3-clause)
- * @copyright  (c) 2011 - 2013, TinyRocket
+ * @copyright  Copyright 2014 TinyRocket
  * @link       http://tinyrocket.co/leafly
  */
 namespace Leafly\Adapter;
 
+/**
+ * @author Antoine Corcy <contact@sbin.dk>
+ */
 interface AdapterInterface {
 
-	public function get($url);
+	/**
+     * @param  string                               $url
+     * @throws \RuntimeException|ExceptionInterface
+     * @return string
+     */
+    public function get($url);
 
-	public function delete($url, $headers = array());
+    /**
+     * @param  string                               $url
+     * @param  array                                $headers (optional)
+     * @throws \RuntimeException|ExceptionInterface
+     */
+    public function delete($url, array $headers = array());
 
-	public function put($url, $headers = array(), $content = '');
+    /**
+     * @param  string                               $url
+     * @param  array                                $headers (optional)
+     * @param  string                               $content (optional)
+     * @throws \RuntimeException|ExceptionInterface
+     * @return string
+     */
+    public function put($url, array $headers = array(), $content = '');
 
-	public function post($url, $headers = array(), $content = '');
+    /**
+     * @param  string                               $url
+     * @param  array                                $headers (optional)
+     * @param  string                               $content (optional)
+     * @throws \RuntimeException|ExceptionInterface
+     * @return string
+     */
+    public function post($url, array $headers = array(), $content = '');
 }

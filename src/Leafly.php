@@ -14,7 +14,7 @@
  * @version    1.0.0
  * @author     TinyRocket <michael@tinyrocket.co>
  * @license    BSD License (3-clause)
- * @copyright  (c) 2011 - 2013, TinyRocket
+ * @copyright  Copyright 2014 TinyRocket
  * @link       http://tinyrocket.co/leafly
  */
 namespace Leafly;
@@ -24,18 +24,38 @@ use Leafly\Resource\Strains;
 
 class Leafly {
 
+	/**
+	 *	Chosen Adapter
+	 *
+	 *	@var 	Adapter
+	 */
 	public $adapter;
 
+	/**
+	 *	Set Adapter Instance
+	 *
+	 *	@param 	Adapter
+	 */
 	public function __construct($adapter)
 	{
 		$this->adapter = $adapter;
 	}
 
+	/**
+	 *	Get Location Instance
+	 *
+	 *	@return \Leafly\Resource\Locations
+	 */
 	public function locations()
 	{
 		return new Locations($this->adapter);
 	}
 
+	/**
+	 *	Get Strain Instance
+	 *
+	 *	@return \Leafly\Resource\Strains
+	 */
 	public function strains()
 	{
 		return new Strains($this->adapter);

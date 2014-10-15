@@ -14,9 +14,75 @@
  * @version    1.0.0
  * @author     TinyRocket <michael@tinyrocket.co>
  * @license    BSD License (3-clause)
- * @copyright  (c) 2011 - 2013, TinyRocket
+ * @copyright  Copyright 2014 TinyRocket
  * @link       http://tinyrocket.co/leafly
  */
 namespace Leafly\Resource;
 
-class Strains extends AbstractResource {}
+class Strains extends AbstractResource {
+
+	/**
+	 *	Perform search for strains
+	 *	
+ 	 *	@param page 		 	 (int) page number
+	 *	@param take 		 	 (int) strains to show
+	 *
+	 *	@return object
+	 */
+	public function search($page = 0, $take = 10)
+	{
+		$params['Page'] = $page;
+		$params['Take'] = $take;
+		return $this->adapter->post(sprintf('%s/strains/', 
+						$this->endpoint), array(), json_encode($params));
+	}
+
+	/**
+	 *	Get a single strain details
+	 *
+	 *	@param strain 	(string) strain slug identifier
+	 *
+	 *	@return object
+	 */
+	public function getDetails($strain)
+	{
+		return $this->adapter->get(sprintf('%s/strains/%s', $this->endpoint, $strain));
+	}
+
+	/**
+	 *	Get a single strain reviews
+	 *
+	 *	@param strain 	(string) strain slug identifier
+	 *
+	 *	@return object
+	 */
+	public function getReviews($strain, $sort = 'date', $page = 0, $take = 10)
+	{
+		return $this->adapter->get(sprintf('%s/strains/%s/reviews?sort=%s&page=%s&take=%s', $this->endpoint, $strain, $sort, $page, $take));
+	}
+
+	/**
+	 *	Get a single strain reviews
+	 *
+	 *	@param strain 	(string) strain slug identifier
+	 *	@param reviewId (int) review identifier
+	 *
+	 *	@return object
+	 */
+	public function getReviewDetails($strain, $reviewId)
+	{
+		return $this->adapter->get(sprintf('%s/strains/%s/reviews/%s', $this->endpoint, $strain, $reviewId));
+	}
+
+	/**
+	 *	Get a single strain photos
+	 *
+	 *	@param strain 	(string) strain slug identifier
+	 *
+	 *	@return object
+	 */
+	public function getPhotos($strain, $page = 0, $take = 10)
+	{
+		return $this->adapter->get(sprintf('%s/strains/%s/photos?page=%s&take=%s', $this->endpoint, $strain, $page, $take));
+	}
+}

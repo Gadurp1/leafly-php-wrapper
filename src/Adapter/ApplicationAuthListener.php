@@ -14,7 +14,7 @@
  * @version    1.0.0
  * @author     TinyRocket <michael@tinyrocket.co>
  * @license    BSD License (3-clause)
- * @copyright  (c) 2011 - 2013, TinyRocket
+ * @copyright  Copyright 2014 TinyRocket
  * @link       http://tinyrocket.co/leafly
  */
 namespace Leafly\Adapter;
@@ -49,6 +49,10 @@ class ApplicationAuthListener implements \Buzz\Listener\ListenerInterface {
 		$this->key = $key;
 	}
 
+	/**
+	 * @author Antoine Corcy <contact@sbin.dk>
+	 */
+	
     /**
      * {@inheritdoc}
      */

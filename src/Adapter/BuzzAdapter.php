@@ -14,7 +14,7 @@
  * @version    1.0.0
  * @author     TinyRocket <michael@tinyrocket.co>
  * @license    BSD License (3-clause)
- * @copyright  (c) 2011 - 2013, TinyRocket
+ * @copyright  Copyright 2014 TinyRocket
  * @link       http://tinyrocket.co/leafly
  */
 namespace Leafly\Adapter;
@@ -29,44 +29,80 @@ class BuzzAdapter extends AbstractAdapter implements AdapterInterface {
 
 	protected $browser;
 
+	 /**
+     * @param string             $app
+     * @param string             $key
+     */
 	public function __construct($app, $key)
 	{
 		$this->browser = new Browser(new Curl());
 		$this->browser->addListener(new ApplicationAuthListener($app, $key));
 	}
 
-	public function get($url)
-	{
-		$response = $this->browser->get($url);
+	/**
+	 * @author Antoine Corcy <contact@sbin.dk>
+	 */
 
-		if ( !$response->isSuccessful() ) {
-			throw new \Exception(__METHOD__);
-		}
+  	/**
+     * {@inheritdoc}
+     */
+    public function get($url)
+    {
+        $response = $this->browser->get($url);
 
-		return $this->format($response->getContent());
-	}
+        if (!$response->isSuccessful()) {
+            throw new \Exception($response);
+        }
 
-	public function delete($url, $headers = array())
-	{
-		
-	}
+        return $response->getContent();
+    }
 
-	public function put($url, $headers = array(), $content = '')
-	{
-		
-	}
+    /**
+     * {@inheritdoc}
+     */
+    public function delete($url, array $headers = array())
+    {
+        $response = $this->browser->delete($url, $headers);
 
-	public function post($url, $headers = array(), $content = '')
-	{
-		$response = $this->browser->post($url, $headers, $content);
+        if (!$response->isSuccessful()) {
+            throw new \Exception($response);
+        }
+    }
 
-		if ( !$response->isSuccessful() ) {
-			throw new \Exception(__METHOD__);
-		}
+    /**
+     * {@inheritdoc}
+     */
+    public function put($url, array $headers = array(), $content = '')
+    {
+        $response = $this->browser->put($url, $headers, $content);
 
-		return $this->format($response->getContent());
-	}
+        if (!$response->isSuccessful()) {
+            throw new \Exception($response);
+        }
 
+        return $response->getContent();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function post($url, array $headers = array(), $content = '')
+    {
+        $headers[] = sprintf("Content-Length: %s", strlen($content));
+		$headers[] = array('Content-Type: application/json');
+
+        $response = $this->browser->post($url, $headers, $content);
+        if (!$response->isSuccessful()) {
+            throw new \Exception($response);
+        }
+
+        return $response->getContent();
+    }
+
+    /**
+     *	@param Response 	$response
+     *	@return \StdObject
+     */
 	protected function format($response)
 	{
 		if ( is_string($response) ) {

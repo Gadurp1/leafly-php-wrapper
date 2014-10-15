@@ -14,36 +14,88 @@
  * @version    1.0.0
  * @author     TinyRocket <michael@tinyrocket.co>
  * @license    BSD License (3-clause)
- * @copyright  (c) 2011 - 2013, TinyRocket
+ * @copyright  Copyright 2014 TinyRocket
  * @link       http://tinyrocket.co/leafly
  */
 namespace Leafly\Resource;
 
 class Locations extends AbstractResource {
 
-	public function search($latitude = null, $longitude = null, $params = array(), $skip = 0, $take = 10)
+	/**
+	 *	Perform search for stores
+	 *	
+	 *	@param latitude 		 (float) radius latitude
+	 *	@param longitude 		 (float) radius longitude
+	 *	@param params 		 	 (array) search variables
+ 	 *	@param skip 		 	 (int) stores to skip
+	 *	@param take 		 	 (int) stores to show
+	 *
+	 *	@return object
+	 */
+	public function search($params = array(), $latitude = null, $longitude = null, $skip = 0, $take = 10)
 	{
+
 		if ( !is_array($params) ) {
-			throw new \Exception("Variable [$params] must be an array.");
+			throw new \Exception("Variable '[$params]' must be an array.");
 		}
-		return $this->adapter->post(sprintf('%s/locations/%s/reviews?latitude=%s&longitude=%s&skip=%s&take=%s', $latitude, $longitude, $this->endpoint, $location, $skip, $take), '', json_encode($params));
+
+		if ( is_null($latitude) ) {
+			$latitude = 47.4891;
+		}
+
+		if ( is_null($longitude) ) {
+			$longitude = -122.2908;
+		}
+
+		return $this->adapter->post(sprintf('%s/locations/?latitude=%s&longitude=%s&skip=%s&take=%s', 
+						$this->endpoint, $latitude, $longitude, $skip, $take), array(), json_encode($params));
 	}
 
+	/**
+	 *	Get a single location details
+	 *
+	 *	@param location 	(string) location slug identifier
+	 *
+	 *	@return object
+	 */
 	public function getDetails($location)
 	{
 		return $this->adapter->get(sprintf('%s/locations/%s', $this->endpoint, $location));
 	}
 
+	/**
+	 *	Get a single location menu
+	 *
+	 *	@param location 	(string) location slug identifier
+	 *
+	 *	@return object
+	 */
 	public function getMenu($location)
 	{
 		return $this->adapter->get(sprintf('%s/locations/%s/menu', $this->endpoint, $location));
 	}
 
+	/**
+	 *	Get a single location specials
+	 *
+	 *	@param location 	(string) location slug identifier
+	 *
+	 *	@return object
+	 */
 	public function getSpecials($location)
 	{
 		return $this->adapter->get(sprintf('%s/locations/%s/specials', $this->endpoint, $location));
 	}
 
+	/**
+	 *	Get a single location details
+	 *
+	 *	@param location 	 (string) location slug identifier
+	 *	@param skip 	 	 (int) reviews to skip
+	 *	@param take 	 	 (int) reviews to show
+	 *
+	 *	@return 			 object
+	 */
 	public function getReviews($location, $skip = 0, $take = 10)
 	{
 		return $this->adapter->get(sprintf('%s/locations/%s/reviews?skip=%s&take=%s', $this->endpoint, $location, $skip, $take));
