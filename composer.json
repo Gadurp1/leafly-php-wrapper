@@ -17,7 +17,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Tinyrocket\\Leafly\\": "src/"
+            "Leafly\\": "src/"
         }
     },
     "minimum-stability": "dev",
