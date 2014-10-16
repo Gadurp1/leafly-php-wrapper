@@ -1,6 +1,8 @@
 {
     "name": "tinyrocket/leafly",
     "description": "A simple wrapper for the Leafly API",
+    "version": "1.0.0",
+    "keywords": ["leafly"],
     "require": {
         "php": ">=5.4.0",
         "phpunit/phpunit": "4.4.*",
@@ -18,5 +20,11 @@
             "Tinyrocket\\Leafly\\": "src/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+
+     "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
 }
