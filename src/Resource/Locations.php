@@ -10,35 +10,48 @@
  * bundled with this package in the LICENSE file.  It is also available at
  * the following URL: http://www.opensource.org/licenses/BSD-3-Clause
  *
- * @package    Leafly
- * @version    1.0.0
- * @author     TinyRocket <michael@tinyrocket.co>
- * @license    BSD License (3-clause)
- * @copyright  Copyright 2014 TinyRocket
- * @link       http://tinyrocket.co/leafly
+ * @subpackage    Leafly\Resource\Locations
+ * @version   	  1.0.0
+ * @author     	  TinyRocket <michael@tinyrocket.co>
+ * @license    	  BSD License (3-clause)
+ * @copyright  	  Copyright 2014 TinyRocket
+ * @link       	  http://tinyrocket.co/leafly
  */
 namespace Leafly\Resource;
 
+/**
+ *	Leafly\Resource\Locations
+ *
+ *	Primary outlet for all location based actions with GeoIP
+ * 	integration coming sooner or later.
+ *
+ *	@see https://developer.leafly.com/docs#locations
+ */
 class Locations extends AbstractResource {
 
 	/**
 	 *	Perform search for stores
 	 *	
-	 *	@param latitude 		 (float) radius latitude
-	 *	@param longitude 		 (float) radius longitude
-	 *	@param params 		 	 (array) search variables
- 	 *	@param skip 		 	 (int) stores to skip
-	 *	@param take 		 	 (int) stores to show
+	 *	@param float  $latitude 		radius latitude
+	 *	@param float  $longitude 		radius longitude
+	 *	@param array  $params 		 	search variables
+ 	 *	@param int    $skip 		 	stores to skip
+	 *	@param int    $take 		 	stores to show
 	 *
 	 *	@return object
 	 */
 	public function search($params = array(), $latitude = null, $longitude = null, $skip = 0, $take = 10)
 	{
-
+		/**
+		 *	Parameters should be an array
+		 */
 		if ( !is_array($params) ) {
 			throw new \Exception("Variable '[$params]' must be an array.");
 		}
 
+		/**
+		 * We'll need a location in order to search
+		 */
 		if ( is_null($latitude) OR is_null($longitude)) {
 			throw new \Exception("Please enter a location. Search expects longitude and latitude");
 		}
@@ -50,7 +63,7 @@ class Locations extends AbstractResource {
 	/**
 	 *	Get a single location details
 	 *
-	 *	@param location 	(string) location slug identifier
+	 *	@param string $location 	 location slug identifier
 	 *
 	 *	@return object
 	 */
@@ -62,7 +75,7 @@ class Locations extends AbstractResource {
 	/**
 	 *	Get a single location menu
 	 *
-	 *	@param location 	(string) location slug identifier
+	 *	@param string $location 	 location slug identifier
 	 *
 	 *	@return object
 	 */
@@ -74,7 +87,7 @@ class Locations extends AbstractResource {
 	/**
 	 *	Get a single location specials
 	 *
-	 *	@param location 	(string) location slug identifier
+	 *	@param string $location 	 location slug identifier
 	 *
 	 *	@return object
 	 */
@@ -86,9 +99,9 @@ class Locations extends AbstractResource {
 	/**
 	 *	Get a single location details
 	 *
-	 *	@param location 	 (string) location slug identifier
-	 *	@param skip 	 	 (int) reviews to skip
-	 *	@param take 	 	 (int) reviews to show
+	 *	@param string $location 		 location slug identifier
+	 *	@param int $skip 	 			 reviews to skip
+	 *	@param int $take 	 			reviews to show
 	 *
 	 *	@return 			 object
 	 */

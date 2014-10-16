@@ -10,21 +10,27 @@
  * bundled with this package in the LICENSE file.  It is also available at
  * the following URL: http://www.opensource.org/licenses/BSD-3-Clause
  *
- * @package    Leafly
- * @version    1.0.0
- * @author     TinyRocket <michael@tinyrocket.co>
- * @license    BSD License (3-clause)
- * @copyright  Copyright 2014 TinyRocket
- * @link       http://tinyrocket.co/leafly
+ * @subpackage    Leafly\Adapter\AdapterInterface
+ * @version       1.0.0
+ * @author        TinyRocket <michael@tinyrocket.co>
+ * @license       BSD License (3-clause)
+ * @copyright     Copyright 2014 TinyRocket
+ * @link          http://tinyrocket.co/leafly
  */
 namespace Leafly\Adapter;
 
 /**
+ * Leafly\Adapter\AdapterInterface
+ * 
+ * Implementation class for HTTP Adaptber
+ *
  * @author Antoine Corcy <contact@sbin.dk>
  */
 interface AdapterInterface {
 
 	/**
+     * Get Request
+     *
      * @param  string                               $url
      * @throws \RuntimeException|ExceptionInterface
      * @return string
@@ -32,6 +38,8 @@ interface AdapterInterface {
     public function get($url);
 
     /**
+     * Delete Request
+     *
      * @param  string                               $url
      * @param  array                                $headers (optional)
      * @throws \RuntimeException|ExceptionInterface
@@ -39,6 +47,8 @@ interface AdapterInterface {
     public function delete($url, array $headers = array());
 
     /**
+     * Put Request
+     *
      * @param  string                               $url
      * @param  array                                $headers (optional)
      * @param  string                               $content (optional)
@@ -48,6 +58,8 @@ interface AdapterInterface {
     public function put($url, array $headers = array(), $content = '');
 
     /**
+     * Post Request
+     *
      * @param  string                               $url
      * @param  array                                $headers (optional)
      * @param  string                               $content (optional)

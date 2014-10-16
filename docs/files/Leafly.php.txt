@@ -1,0 +1,72 @@
+<?php
+/**
+ * This file is part of the Leafly package
+ *
+ * NOTICE OF LICENSE
+ *
+ * Licensed under the 3-clause BSD License.
+ *
+ * This source file is subject to the 3-clause BSD License that is
+ * bundled with this package in the LICENSE file.  It is also available at
+ * the following URL: http://www.opensource.org/licenses/BSD-3-Clause
+ *
+ * @subpackage    Leafly\Leafly
+ * @version    	  1.0.0
+ * @author     	  TinyRocket <michael@tinyrocket.co>
+ * @license    	  BSD License (3-clause)
+ * @copyright  	  Copyright 2014 TinyRocket
+ * @link       	  http://tinyrocket.co/leafly
+ */
+namespace Leafly;
+
+use Leafly\Adapter\BuzzAdapter;
+use Leafly\Resource\Locations;
+use Leafly\Resource\Strains;
+
+/**
+ *	Leafly\Leafly
+ *
+ *	Core class used for Leafly integration. Provides two
+ * 	possible outlets, Locations and Strains. Both instances
+ *	use the Adapter chosen during class initialization
+ */
+class Leafly {
+
+	/**
+	 *	Chosen Adapter
+	 *
+	 *	@var 	Adapter
+	 */
+	public $adapter;
+
+	/**
+	 *	Set Adapter Instance
+	 *
+	 *	@param string $app		Application ID obtained from Leafly Developer Center
+	 *	@param string $key		Application key obtained from Leafly Developer Center
+	 */
+	public function __construct($app, $key)
+	{
+		$this->adapter = new BuzzAdapter($app, $key);
+	}
+
+	/**
+	 *	Get Location Instance
+	 *
+	 *	@return \Leafly\Resource\Locations
+	 */
+	public function locations()
+	{
+		return new Locations($this->adapter);
+	}
+
+	/**
+	 *	Get Strain Instance
+	 *
+	 *	@return \Leafly\Resource\Strains
+	 */
+	public function strains()
+	{
+		return new Strains($this->adapter);
+	}
+}

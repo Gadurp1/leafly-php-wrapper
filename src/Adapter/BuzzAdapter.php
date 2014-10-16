@@ -10,12 +10,12 @@
  * bundled with this package in the LICENSE file.  It is also available at
  * the following URL: http://www.opensource.org/licenses/BSD-3-Clause
  *
- * @package    Leafly
- * @version    1.0.0
- * @author     TinyRocket <michael@tinyrocket.co>
- * @license    BSD License (3-clause)
- * @copyright  Copyright 2014 TinyRocket
- * @link       http://tinyrocket.co/leafly
+ * @subpackage    Leafly\Adapter\BuzzAdapter
+ * @version       1.0.0
+ * @author        TinyRocket <michael@tinyrocket.co>
+ * @license       BSD License (3-clause)
+ * @copyright     Copyright 2014 TinyRocket
+ * @link          http://tinyrocket.co/leafly
  */
 namespace Leafly\Adapter;
 
@@ -25,13 +25,23 @@ use Buzz\Client\Curl;
 use Buzz\Listener\ListenerInterface;
 use Leafly\Adapter\ApplicationAuthListener;
 
+/**
+ * Leafly\Adapter\BuzzAdapter
+ *
+ * Extension of the BuzzAdapter and the default
+ * HTTP adapter for Leafly. Can serve as an outline
+ * for future Adapter integrations
+ */
 class BuzzAdapter extends AbstractAdapter implements AdapterInterface {
 
+    /**
+     * @var \Buzz\Browser instance
+     */
 	protected $browser;
 
-	 /**
-     * @param string             $app
-     * @param string             $key
+	/**
+     *  @param string $app      Application ID obtained from Leafly Developer Center
+     *  @param string $key      Application key obtained from Leafly Developer Center
      */
 	public function __construct($app, $key)
 	{
@@ -45,6 +55,8 @@ class BuzzAdapter extends AbstractAdapter implements AdapterInterface {
 
   	/**
      * {@inheritdoc}
+     *
+     * @param string $url       Endpoint URL
      */
     public function get($url)
     {
@@ -59,6 +71,9 @@ class BuzzAdapter extends AbstractAdapter implements AdapterInterface {
 
     /**
      * {@inheritdoc}
+     *
+     * @param array  $headers   Additional headers to be sent with request
+     * @param string $url       Endpoint URL
      */
     public function delete($url, array $headers = array())
     {
@@ -71,6 +86,10 @@ class BuzzAdapter extends AbstractAdapter implements AdapterInterface {
 
     /**
      * {@inheritdoc}
+     *
+     * @param array  $headers    Additional headers to be sent with request
+     * @param string $url        Endpoint URL
+     * @param string $content    JSON Encoded parameter data
      */
     public function put($url, array $headers = array(), $content = '')
     {
@@ -85,6 +104,10 @@ class BuzzAdapter extends AbstractAdapter implements AdapterInterface {
 
     /**
      * {@inheritdoc}
+     *
+     * @param array  $headers    Additional headers to be sent with request
+     * @param string $url        Endpoint URL
+     * @param string $content    JSON Encoded parameter data
      */
     public function post($url, array $headers = array(), $content = '')
     {
@@ -100,6 +123,8 @@ class BuzzAdapter extends AbstractAdapter implements AdapterInterface {
     }
 
     /**
+     *  Format response data
+     *
      *	@param Response 	$response
      *	@return \StdObject
      */

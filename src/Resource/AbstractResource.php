@@ -10,15 +10,21 @@
  * bundled with this package in the LICENSE file.  It is also available at
  * the following URL: http://www.opensource.org/licenses/BSD-3-Clause
  *
- * @package    Leafly
- * @version    1.0.0
- * @author     TinyRocket <michael@tinyrocket.co>
- * @license    BSD License (3-clause)
- * @copyright  Copyright 2014 TinyRocket
- * @link       http://tinyrocket.co/leafly
+ * @subpackage    Leafly\Resource\AbstractResource
+ * @version    	  1.0.0
+ * @author     	  TinyRocket <michael@tinyrocket.co>
+ * @license    	  BSD License (3-clause)
+ * @copyright  	  Copyright 2014 TinyRocket
+ * @link       	  http://tinyrocket.co/leafly
  */
 namespace Leafly\Resource;
 
+/**
+ *	Leafly\Resource\AbstractResource
+ *
+ *	Provides an abstract foundation for resource classes
+ *	and future API extensions
+ */
 abstract class AbstractResource {
 
 	/**
@@ -38,8 +44,8 @@ abstract class AbstractResource {
 	/**
 	 *	Set adapter and endpoint for resources
 	 *
-	 *	@param adapter 		Adpater chosen during initialization
-	 *	@param endponint 	API Endpoint, if different
+	 *	@param mixed  $adapter 		Adpater chosen during initialization
+	 *	@param string $endpoint 	API Endpoint, if different
 	 */
 	public function __construct($adapter, $endpoint = 'http://data.leafly.com/')
 	{

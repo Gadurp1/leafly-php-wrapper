@@ -10,15 +10,22 @@
  * bundled with this package in the LICENSE file.  It is also available at
  * the following URL: http://www.opensource.org/licenses/BSD-3-Clause
  *
- * @package    Leafly
- * @version    1.0.0
- * @author     TinyRocket <michael@tinyrocket.co>
- * @license    BSD License (3-clause)
- * @copyright  Copyright 2014 TinyRocket
- * @link       http://tinyrocket.co/leafly
+ * @subpackage    Leafly\Adapter\AbstractAdapter
+ * @version    	  1.0.0
+ * @author     	  TinyRocket <michael@tinyrocket.co>
+ * @license    	  BSD License (3-clause)
+ * @copyright  	  Copyright 2014 TinyRocket
+ * @link       	  http://tinyrocket.co/leafly
  */
 namespace Leafly\Adapter;
 
+/**
+ *	Leafly\Adapter\AbstractAdapter
+ *
+ *	Provides an abstract foundation for setting
+ *	required variables used by the chosen HTTP 
+ *	Adapter. This should be extended directly.
+ */
 abstract class AbstractAdapter {
 
 	/**
@@ -37,6 +44,9 @@ abstract class AbstractAdapter {
 
 	/**
 	 *	Create a new instance of Leafly\Adapter
+	 *	
+	 *	@param string $app		Application ID obtained from Leafly Developer Center
+	 *	@param string $key		Application key obtained from Leafly Developer Center
 	 *
 	 *	@return void
 	 */

@@ -10,18 +10,24 @@
  * bundled with this package in the LICENSE file.  It is also available at
  * the following URL: http://www.opensource.org/licenses/BSD-3-Clause
  *
- * @package    Leafly
- * @version    1.0.0
- * @author     TinyRocket <michael@tinyrocket.co>
- * @license    BSD License (3-clause)
- * @copyright  Copyright 2014 TinyRocket
- * @link       http://tinyrocket.co/leafly
+ * @subpackage    Leafly\Adapter\ApplicationAuthListener;
+ * @version    	  1.0.0
+ * @author        TinyRocket <michael@tinyrocket.co>
+ * @license       BSD License (3-clause)
+ * @copyright     Copyright 2014 TinyRocket
+ * @link          http://tinyrocket.co/leafly
  */
 namespace Leafly\Adapter;
 
 use Buzz\Message\MessageInterface;
 use Buzz\Message\RequestInterface;
 
+/**
+ * Leafly\Adapter\ApplicationAuthListener
+ *
+ * Extension of the Buzz Listener Interface, this
+ * sets the nessecary headers for all Leafly requests
+ */
 class ApplicationAuthListener implements \Buzz\Listener\ListenerInterface {
 
 	/**
@@ -40,6 +46,9 @@ class ApplicationAuthListener implements \Buzz\Listener\ListenerInterface {
 
 	/**
 	 *	Create a new instance of Leafly\Adapter
+	 * 
+	 *	@param string $app		Application ID obtained from Leafly Developer Center
+	 *	@param string $key		Application key obtained from Leafly Developer Center
 	 *
 	 *	@return void
 	 */
@@ -55,6 +64,8 @@ class ApplicationAuthListener implements \Buzz\Listener\ListenerInterface {
 	
     /**
      * {@inheritdoc}
+     *
+     *	@param $request mixed \RequestInterface instance
      */
     public function preSend(RequestInterface $request)
     {
@@ -64,6 +75,9 @@ class ApplicationAuthListener implements \Buzz\Listener\ListenerInterface {
 
     /**
      * {@inheritdoc}
+     *
+     *	@param $request mixed \RequestInterface instance
+     *	@param $response mixed \MessageInterface instance
      */
     public function postSend(RequestInterface $request, MessageInterface $response)
     {

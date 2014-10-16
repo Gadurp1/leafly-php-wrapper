@@ -10,22 +10,29 @@
  * bundled with this package in the LICENSE file.  It is also available at
  * the following URL: http://www.opensource.org/licenses/BSD-3-Clause
  *
- * @package    Leafly
- * @version    1.0.0
- * @author     TinyRocket <michael@tinyrocket.co>
- * @license    BSD License (3-clause)
- * @copyright  Copyright 2014 TinyRocket
- * @link       http://tinyrocket.co/leafly
+ * @subpackage    Leafly\Resource\Strains
+ * @version       1.0.0
+ * @author        TinyRocket <michael@tinyrocket.co>
+ * @license       BSD License (3-clause)
+ * @copyright     Copyright 2014 TinyRocket
+ * @link          http://tinyrocket.co/leafly
  */
 namespace Leafly\Resource;
 
+/**
+ *	Leafly\Resource\Strains
+ *
+ *	Primary outlet for all strain based actions
+ *
+ *	@see https://developer.leafly.com/docs#strains
+ */
 class Strains extends AbstractResource {
 
 	/**
 	 *	Perform search for strains
 	 *	
- 	 *	@param page 		 	 (int) page number
-	 *	@param take 		 	 (int) strains to show
+ 	 *	@param int $page 		 page number
+	 *	@param int $take 		 strains to show
 	 *
 	 *	@return object
 	 */
@@ -39,7 +46,7 @@ class Strains extends AbstractResource {
 	/**
 	 *	Get a single strain details
 	 *
-	 *	@param strain 	(string) strain slug identifier
+	 *	@param string $strain 	 strain slug identifier
 	 *
 	 *	@return object
 	 */
@@ -51,7 +58,10 @@ class Strains extends AbstractResource {
 	/**
 	 *	Get a single strain reviews
 	 *
-	 *	@param strain 	(string) strain slug identifier
+	 *	@param string $strain 	 strain slug identifier
+	 *	@param string $sort 	 review sort order
+	 *	@param int    $page 	 curent search results page
+	 *	@param int    $take 	 number of records to return
 	 *
 	 *	@return object
 	 */
@@ -63,8 +73,8 @@ class Strains extends AbstractResource {
 	/**
 	 *	Get a single strain reviews
 	 *
-	 *	@param strain 	(string) strain slug identifier
-	 *	@param reviewId (int) review identifier
+	 *	@param string 	$strain 	 strain slug identifier
+	 *	@param int    	$reviewId  review identifier
 	 *
 	 *	@return object
 	 */
@@ -76,7 +86,9 @@ class Strains extends AbstractResource {
 	/**
 	 *	Get a single strain photos
 	 *
-	 *	@param strain 	(string) strain slug identifier
+	 *	@param string $strain 	 strain slug identifier
+	 * 	@param int    $page 	 curent search results page
+	 *	@param int    $take 	 number of records to return
 	 *
 	 *	@return object
 	 */

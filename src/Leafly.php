@@ -10,12 +10,12 @@
  * bundled with this package in the LICENSE file.  It is also available at
  * the following URL: http://www.opensource.org/licenses/BSD-3-Clause
  *
- * @package    Leafly
- * @version    1.0.0
- * @author     TinyRocket <michael@tinyrocket.co>
- * @license    BSD License (3-clause)
- * @copyright  Copyright 2014 TinyRocket
- * @link       http://tinyrocket.co/leafly
+ * @subpackage    Leafly\Leafly
+ * @version    	  1.0.0
+ * @author     	  TinyRocket <michael@tinyrocket.co>
+ * @license    	  BSD License (3-clause)
+ * @copyright  	  Copyright 2014 TinyRocket
+ * @link       	  http://tinyrocket.co/leafly
  */
 namespace Leafly;
 
@@ -23,6 +23,13 @@ use Leafly\Adapter\BuzzAdapter;
 use Leafly\Resource\Locations;
 use Leafly\Resource\Strains;
 
+/**
+ *	Leafly\Leafly
+ *
+ *	Core class used for Leafly integration. Provides two
+ * 	possible outlets, Locations and Strains. Both instances
+ *	use the Adapter chosen during class initialization
+ */
 class Leafly {
 
 	/**
@@ -35,8 +42,8 @@ class Leafly {
 	/**
 	 *	Set Adapter Instance
 	 *
-	 *	@param 	app
-	 *	@param  key
+	 *	@param string $app		Application ID obtained from Leafly Developer Center
+	 *	@param string $key		Application key obtained from Leafly Developer Center
 	 */
 	public function __construct($app, $key)
 	{
