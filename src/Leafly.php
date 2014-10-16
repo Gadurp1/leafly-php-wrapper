@@ -19,6 +19,7 @@
  */
 namespace Leafly;
 
+use Leafly\Adapter\BuzzAdapter;
 use Leafly\Resource\Locations;
 use Leafly\Resource\Strains;
 
@@ -34,11 +35,12 @@ class Leafly {
 	/**
 	 *	Set Adapter Instance
 	 *
-	 *	@param 	Adapter
+	 *	@param 	app
+	 *	@param  key
 	 */
-	public function __construct($adapter)
+	public function __construct($app, $key)
 	{
-		$this->adapter = $adapter;
+		$this->adapter = new BuzzAdapter($app, $key);
 	}
 
 	/**

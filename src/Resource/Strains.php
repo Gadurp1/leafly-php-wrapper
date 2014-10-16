@@ -33,8 +33,7 @@ class Strains extends AbstractResource {
 	{
 		$params['Page'] = $page;
 		$params['Take'] = $take;
-		return $this->adapter->post(sprintf('%s/strains/', 
-						$this->endpoint), array(), json_encode($params));
+		return $this->adapter->post(sprintf('%s/strains/', $this->endpoint), array(), json_encode($params));
 	}
 
 	/**

@@ -39,12 +39,8 @@ class Locations extends AbstractResource {
 			throw new \Exception("Variable '[$params]' must be an array.");
 		}
 
-		if ( is_null($latitude) ) {
-			$latitude = 47.4891;
-		}
-
-		if ( is_null($longitude) ) {
-			$longitude = -122.2908;
+		if ( is_null($latitude) OR is_null($longitude)) {
+			throw new \Exception("Please enter a location. Search expects longitude and latitude");
 		}
 
 		return $this->adapter->post(sprintf('%s/locations/?latitude=%s&longitude=%s&skip=%s&take=%s', 
