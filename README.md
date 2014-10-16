@@ -24,7 +24,7 @@ Require the autoloader
 	
 Initiate Leafly with your Application ID and Key [Found here](https://developer.leafly.com/)
 	
-	$leafly = new Tinyrocket\Leafly\Leafly($appId, $key)
+	$leafly = new Leafly\Leafly($appId, $key)
 	
 ###Locations
 
