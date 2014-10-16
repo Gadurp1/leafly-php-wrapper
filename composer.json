@@ -20,11 +20,11 @@
             "Tinyrocket\\Leafly\\": "src/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
 
      "extra": {
         "branch-alias": {
-            "dev-master": "1.0.x-dev"
+            "dev-master": "1.0.0"
         }
     }
 }
