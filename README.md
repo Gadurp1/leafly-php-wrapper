@@ -2,6 +2,8 @@ Leafly API PHP Wrapper
 ===========================
 A PHP 5.3+ warpper for the [Leafly API](https://developer.leafly.com/), with Laravel, FuelPHP and Codeignitor integration coming soon.
 
+[![Latest Stable Version](https://poser.pugx.org/tinyrocket/leafly/v/stable.svg)](https://packagist.org/packages/tinyrocket/leafly) [![Total Downloads](https://poser.pugx.org/tinyrocket/leafly/downloads.svg)](https://packagist.org/packages/tinyrocket/leafly) [![Latest Unstable Version](https://poser.pugx.org/tinyrocket/leafly/v/unstable.svg)](https://packagist.org/packages/tinyrocket/leafly) [![License](https://poser.pugx.org/tinyrocket/leafly/license.svg)](https://packagist.org/packages/tinyrocket/leafly)
+
 ## Installation
 
 To install via composer, add the following to your requirements
